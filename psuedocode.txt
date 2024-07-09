@@ -1,0 +1,30 @@
+Check for the number of command line arguments
+	If not enough print the following:
+		Error: Wrong number of arguments!
+		Usage: ./run_simulation <seed> <total_min> <arrival_prob> <order_prob> <num_queues> <outputFile>
+
+Save the command line arguments in variables
+Create the empty queue 
+Add the first customer at time = 0
+	
+Create a vector of Customers pointers to store the completed customer data
+	vector<shared_ptr<Customer>> completed;
+
+Run the simulation: For each time step
+	Calculate a random value between 0 and 1
+	If smaller than the command line argument <arrival_prob>
+		Add a customer to the shortest queue
+			Calculate the length of service
+	Check to see if the front customer is done:
+		- peekFrontCustomer()
+		- Calculate a random value between 0 and 1
+		- If smaller than the command line argument <order_prob>
+			Remove the customer from the queue
+			Add to the completed vector
+			Modify the completedTime variable
+		- Set the start time of the next customer
+
+When the simulation is finished:
+	Print the data in the completed vector to a file
+	use setw(8) between each output item
+	Print summary data to the terminal
